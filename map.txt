@@ -1,0 +1,54 @@
+Game:
+to create a game
+    p1 =  input of player name
+    p2 = input player name 2
+    choose randomly
+to create round
+    p1 @ board[0]
+    p2 @ board[0]
+    Gameover == p1[pos] >= 50 or p2[pos] >= 50
+    round_count = 1
+    while not gameover
+        print round_count
+
+
+
+Cards:
+    create cards
+    Next planet x5
+    Next nebula x5
+    Next star x5
+    Move 5 x10
+    Move 4 x10
+    Move 3 x15
+    Move 2 x15
+    Move 1 x10
+    Back 2 x5
+    Back 1 x5
+    Miss a turn x5
+    Move to closest wormhole x5
+    Last planet x5
+
+
+
+Board:
+    create game spaces, give type(planet,nebula,star, 1x Start, 1x finish, wormhole pair(2spaces) , blank spaces)
+    start is always board[0]
+    finish is always board[50]
+    others are randomly placed on board (shuffled and then placed on board (board[1] to board[49]))
+    wormhole:
+        if pos_player == wormhole1:
+            pos_player == wormhole2
+
+    board = [start]
+    get
+
+Store results
+
+move players
+    create board position marker for players
+    players start at 0 --> start square
+    player counter pass through function depending on card drawn
+    when land check if wormhole
+        if so move to other wormhole
+

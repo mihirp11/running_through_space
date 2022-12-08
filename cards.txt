@@ -1,0 +1,13 @@
+Next Planet, 5
+Next Nebula, 5
+Next Star,5
+Move 5, 10
+Move 4, 10
+Move 3, 15
+Move 2, 15
+Move 1, 10
+Move back 2, 5
+Move back 1, 5
+Miss a turn, 5
+Closest wormhole, 5
+Last planet, 5

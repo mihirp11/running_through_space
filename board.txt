@@ -1,0 +1,46 @@
+name,type
+Mercury,planet
+Venus,planet
+Earth,planet
+Mars,planet
+Jupiter,planet
+Saturn,planet
+Uranus,planet
+Neptune,planet
+Pluto,planet
+Polaris,star
+Castor,star
+Pollux,star
+Orion,star
+Sirius,star
+Altair,star
+Sun,star
+Antares,star
+Pegasus,star
+Betelgeuse,star
+Ghost of Jupiter,nebula
+Dumbbell,nebula
+Ring,nebula
+Cat's Eye,nebula
+Little Ghost,nebula
+Medusa,nebula
+Helix,nebula
+Owl,nebula
+Butterfly,nebula
+Lemon Slice,nebula
+Soap Bubble,nebula
+Wormhole1,wormhole
+Wormhole2,wormhole
+Wormhole3,wormhole
+Blank,blank
+Blank,blank
+Blank,blank
+Blank,blank
+Blank,blank
+Blank,blank
+Blank,blank
+Blank,blank
+Blank,blank
+Blank,blank
+Blank,blank
+Blank,blank
