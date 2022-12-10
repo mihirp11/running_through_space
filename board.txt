@@ -29,9 +29,9 @@ Owl,nebula
 Butterfly,nebula
 Lemon Slice,nebula
 Soap Bubble,nebula
-Wormhole1,wormhole
-Wormhole2,wormhole
-Wormhole3,wormhole
+Wormhole 1,wormhole
+Wormhole 2,wormhole
+Wormhole 3,wormhole
 Blank,blank
 Blank,blank
 Blank,blank
