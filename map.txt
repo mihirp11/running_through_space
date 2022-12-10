@@ -46,7 +46,7 @@ Board:
 Store results
 
 move players
-    create board position marker for players
+    create board position marker for players.
     players start at 0 --> start square
     player counter pass through function depending on card drawn
     when land check if wormhole

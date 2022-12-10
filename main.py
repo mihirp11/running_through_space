@@ -56,7 +56,13 @@ def player_turn(player, position, deck, board):
             for index, square in enumerate(board):
                 if square['name'] == new_square['name'] and new_pos != index:
                     new_pos = index
-        print(player, 'You are now at the ', new_square['type'], new_square['name'] + ',', 49-new_pos, 'squares away from the end.')
+            print(player, 'You are now at ', new_square['name'] + ',', 49-new_pos, 'squares away from the end.')
+        elif new_square['type'] == 'blank':
+            print(player, 'You are now at a blank space, ', 49-new_pos, 'squares away from the end.')
+        elif new_square['type'] == 'end' or new_square['type'] == 'start':
+            print('You are now at the ', new_square['name'])
+        else:
+            print(player, 'You are now at the ', new_square['type'], new_square['name'] + ',', 49-new_pos, 'squares away from the end.')
     return new_pos
 
 
@@ -153,7 +159,7 @@ def update_win_file(win_list):
     for dictionary in win_list:
         writer.writerow(dictionary.values())
     f.close()
-
+#TODO handle exception for no file
 
 def find(lst, key, value):
     for i, dic in enumerate(lst):
