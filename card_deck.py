@@ -71,20 +71,22 @@ def miss_a_turn(position, b):
 
 
 def closest_wormhole(position, board):
+    index_f = 50
+    index_b = 50
     for index, square in enumerate(board[position:]):
         if square['type'] == 'wormhole':
-            indexf = index
+            index_f = index
             break
-        indexf = 50
+
     for index, square in enumerate(board[position::-1]):
         if square['type'] == 'wormhole':
-            indexb = index
+            index_b = index
             break
-        indexb = 50
-    if indexf <= indexb:
-        return position + indexf
+
+    if index_f <= index_b:
+        return position + index_f
     else:
-        return position - indexb
+        return position - index_b
 
 
 def last_planet(position, board):

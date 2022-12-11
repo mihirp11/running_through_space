@@ -17,7 +17,7 @@ def get_player_card(deck):
         elif draw_choice == '2':
             card = deck[0]
             deck.pop(0)
-            print('You drew: ' + card['name'])
+            print('You drew: ' + card['name'] + "\n")
             return card
         else:
             print('Please enter either 1 or 2 to get your card:')
@@ -27,17 +27,17 @@ def initial_display(board):
     squares = []
     for square in board:
         squares.append(square['name'])
-    reverse_squares = squares[::-1]
+    print(squares)
     print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*squares[0:10]))
-    print(' '*125 + '|')
-    print(' '*125 + '|')
-    print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*reverse_squares[30:40]))
-    print(' '*4 + '|')
-    print(' '*4 + '|')
+    print(' ' * 125 + '|')
+    print(' ' * 125 + '|')
+    print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*squares[10:20][::-1]))
+    print(' ' * 4 + '|')
+    print(' ' * 4 + '|')
     print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*squares[20:30]))
     print(' '*125 + '|')
     print(' '*125 + '|')
-    print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*reverse_squares[10:20]))
+    print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*squares[30:40][::-1]))
     print(' '*4 + '|')
     print(' '*4 + '|')
     print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*squares[40:50]))
@@ -70,18 +70,18 @@ def play_game(p1, p2):
     deck = card_deck.create_cards()
     board = create_board()
     initial_display(board)
-    round = 1
+    round_num = 1
     p1_position = 0
     p2_position = 0
     while p1_position < 49 and p2_position < 49:
-        print('---- Round ', round, '----')
+        print('---- Round ', round_num, '----')
         print('Player ' + p1['player name'] + "'s turn: ")
         p1_position = player_turn(p1['player name'], p1_position, deck, board)
         if p1_position >= 49:
             break
         print('Player ' + p2['player name'] + "'s turn: ")
         p2_position = player_turn(p2['player name'], p2_position, deck, board)
-        round += 1
+        round_num += 1
     if p1_position > p2_position:
         return p1
     else:
@@ -97,34 +97,38 @@ def find_in_winners(p1, p2):
     with open('player_history.csv') as f:
         csv_reader = csv.DictReader(f)
         winners_list = []
-        wincount = []
+        win_count = []
         for row in csv_reader:
             winners_list.append(row['player name'])
             x = int(row['wins'])
-            wincount.append({'player name': row['player name'], 'wins': x})
+            win_count.append({'player name': row['player name'], 'wins': x})
         print(winners_list)
         f.close()
         p1 = p1.lower()
         p2 = p2.lower()
         print(p1)
         if p1 not in winners_list:
-            wincount.append({'player name': p1, 'wins': 0})
+            win_count.append({'player name': p1, 'wins': 0})
         if p2 not in winners_list:
-            wincount.append({'player name': p2, 'wins': 0})
-    return wincount
+            win_count.append({'player name': p2, 'wins': 0})
+    return win_count
 
 
 def main():
-    p3 = input('Input Player 1 username: ')
-    p4 = input('Input Player 2 username: ')
+    p3 = 1
+    p4 = 1
+    while p3 == p4:
+        print("Both players need to have different usernames ")
+        p3 = input('Input Player 1 username: ')
+        p4 = input('Input Player 2 username: ')
     if random.randint(1, 2) == 1:
         print('By random selection ' + p3 + ' is chosen to go first...')
         p1 = p3.strip()
         p2 = p4.strip()
     else:
         print('By random selection ' + p4 + ' is chosen to go first...')
-        p2 = p3
-        p1 = p4
+        p2 = p3.strip()
+        p1 = p4.strip()
     win_data = find_in_winners(p1, p2)
     for i in win_data:
         if i['player name'] == p1:
