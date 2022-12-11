@@ -27,18 +27,13 @@ def initial_display(board):
     squares = []
     for square in board:
         squares.append(square['name'])
-    print(squares)
     print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*squares[0:10]))
     print(' ' * 125 + '|')
-    print(' ' * 125 + '|')
-    print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*squares[10:20][::-1]))
-    print(' ' * 4 + '|')
+    print('{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}'.format(*squares[10:20][::-1]))
     print(' ' * 4 + '|')
     print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*squares[20:30]))
     print(' '*125 + '|')
-    print(' '*125 + '|')
-    print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*squares[30:40][::-1]))
-    print(' '*4 + '|')
+    print('{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}<--{:^10}'.format(*squares[30:40][::-1]))
     print(' '*4 + '|')
     print('{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}-->{:^10}'.format(*squares[40:50]))
 
@@ -75,11 +70,11 @@ def play_game(p1, p2):
     p2_position = 0
     while p1_position < 49 and p2_position < 49:
         print('---- Round ', round_num, '----')
-        print('Player ' + p1['player name'] + "'s turn: ")
+        print('\nPlayer ' + p1['player name'] + "'s turn: ")
         p1_position = player_turn(p1['player name'], p1_position, deck, board)
         if p1_position >= 49:
             break
-        print('Player ' + p2['player name'] + "'s turn: ")
+        print('\nPlayer ' + p2['player name'] + "'s turn: ")
         p2_position = player_turn(p2['player name'], p2_position, deck, board)
         round_num += 1
     if p1_position > p2_position:
@@ -102,11 +97,9 @@ def find_in_winners(p1, p2):
             winners_list.append(row['player name'])
             x = int(row['wins'])
             win_count.append({'player name': row['player name'], 'wins': x})
-        print(winners_list)
         f.close()
         p1 = p1.lower()
         p2 = p2.lower()
-        print(p1)
         if p1 not in winners_list:
             win_count.append({'player name': p1, 'wins': 0})
         if p2 not in winners_list:
@@ -135,11 +128,11 @@ def main():
             p1 = i
         elif i['player name'] == p2:
             p2 = i
-    print(p1, p2)
     winner = play_game(p1, p2)
     x = find(win_data, 'player name', winner['player name'])
     win_data[x]['wins'] += 1
-    print(winner['player name'] + ' wins!\n',  winner['player name'] + ' now has a total of {} wins'.format(win_data[x]['wins']))
+    print(winner['player name'] + ' wins!')
+    print(winner['player name'] + ' now has a total of {} wins'.format(win_data[x]['wins']))
     update_win_file(win_data)
     print('1. Play Again \n2. Exit \n')
     loop = True

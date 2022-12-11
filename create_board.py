@@ -1,5 +1,5 @@
 import random
-
+import csv
 
 def shuffle(deck):
     for i in range(len(deck) - 1, 0, -1):
@@ -11,17 +11,12 @@ def shuffle(deck):
 
 def create_board():
     squares = []
-    f = open("board.txt", "r")
-    lines = f.read().splitlines()
-    for line in lines:
-        square_id = line.split(",")
-        d = {
-            'name': square_id[0],
-            'type': square_id[1]
-        }
-        if d['type'] == 'wormhole':
-            squares.append(d)
-        squares.append(d)
+    with open('board.csv') as f:
+        csv_reader = csv.DictReader(f)
+        for row in csv_reader:
+            if row['type'] == 'wormhole':
+                squares.append(row)
+            squares.append(row)
     f.close()
     shuffle(squares)
     squares.append({'name': 'End', 'type': 'end'})

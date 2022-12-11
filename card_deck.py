@@ -19,7 +19,7 @@ def create_cards():
 
 
 def give_next_type(position, board, type):
-    for index, square in enumerate(board[position:50]):
+    for index, square in enumerate(board[position:]):
         if square['type'] == type:
             return position + index
     print("No" + type + "  left, next player's turn: ")
